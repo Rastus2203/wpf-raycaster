@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Image Name="viewPort" Height="Auto" Width="Auto" Margin="0,0,0,0" Stretch="Fill" RenderOptions.BitmapScalingMode="Fant"/>
     </Grid>
 </Window>
