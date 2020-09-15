@@ -28,6 +28,7 @@ namespace RayCaster
 
             int x = 5;
             Console.WriteLine(x);
+            int y = x + 7;
         }
     }
 }
