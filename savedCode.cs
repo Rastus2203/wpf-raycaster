@@ -1,4 +1,7 @@
-﻿namespace Tester
+﻿// None of this code is actually used, I just store stuff here while working
+
+
+namespace Tester
 { 
     private class Tester 
     {
