@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayCaster", "RayCaster.csproj", "{525BF7FC-3E52-4BA5-BE71-8AB347530CFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{525BF7FC-3E52-4BA5-BE71-8AB347530CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525BF7FC-3E52-4BA5-BE71-8AB347530CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525BF7FC-3E52-4BA5-BE71-8AB347530CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525BF7FC-3E52-4BA5-BE71-8AB347530CFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C39DFE6C-8A6E-49E1-9A01-F432AE2A972C}
+	EndGlobalSection
+EndGlobal
