@@ -24,7 +24,7 @@ namespace RayCaster
         {
             InitializeComponent();
 
-            BitmapSource frame;
+            BitmapSource frame; //test1
 
 
 
