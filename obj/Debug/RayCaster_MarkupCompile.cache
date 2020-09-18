@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\TomB\source\repos\wpf-raycaster\obj\Debug\
+C:\Users\Tom\source\repos\RayCaster\obj\Debug\
 RayCaster
 none
 false
 DEBUG;TRACE
-C:\Users\TomB\source\repos\wpf-raycaster\App.xaml
+C:\Users\Tom\source\repos\RayCaster\App.xaml
 11151548125
 
 61661429049
 13152784993
 MainWindow.xaml;
 
-True
+False
 
