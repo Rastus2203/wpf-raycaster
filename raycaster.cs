@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Diagnostics;
 
 namespace RayCaster
 {
@@ -17,13 +18,16 @@ namespace RayCaster
         int frameWidth;
         int bytesPerPixel;
         int frameStride;
+        int frameCount;
+        Image viewPort;
         byte[] frameBuffer;
 
-        public rayCaster (int inputHeight, int inputWidth, int inputBytesPerPixel)
+        public rayCaster (int inputHeight, int inputWidth, int inputBytesPerPixel, ref Image inputViewPort)
         {
             frameWidth = inputWidth;
             frameHeight = inputHeight;
             bytesPerPixel = inputBytesPerPixel;
+            viewPort = inputViewPort;
             frameStride = frameWidth * bytesPerPixel;
 
             frameBuffer = new byte[frameWidth * frameHeight * bytesPerPixel];
@@ -33,7 +37,14 @@ namespace RayCaster
 
         }
 
-
+        public void beginRender()
+        {
+            renderFrame();
+            while(true)
+            {
+                renderFrame();
+            }
+        }
 
 
 
@@ -45,7 +56,7 @@ namespace RayCaster
 
 
 
-        public void renderFrame(ref Image viewPort) {
+        public void renderFrame() {
             // Draws a gradient over the back, mostly just testing if viewport works
             for (int i = 0; i < frameBuffer.Length; i++)
             {
@@ -62,6 +73,8 @@ namespace RayCaster
             BitmapSource frame = BitmapSource.Create(frameWidth, frameHeight, 96, 96, PixelFormats.Bgra32, null, frameBuffer, frameStride);
             frame.Freeze();
             viewPort.Source = frame;
+            frameCount++;
+            Trace.Write(frameCount);
         }
 
 
