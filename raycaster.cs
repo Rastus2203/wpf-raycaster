@@ -14,11 +14,22 @@ namespace RayCaster
 {
     class rayCaster
     {
+        // Needed to send the generated frame data back to the ui
+        public delegate void rayCasterDelegate();
+
+        public void setViewPort()
+        {
+            viewPort.Source = frame;
+        }
+
+
+
         int frameHeight;
         int frameWidth;
         int bytesPerPixel;
         int frameStride;
         int frameCount;
+        BitmapSource frame;
         Image viewPort;
         byte[] frameBuffer;
 
@@ -31,20 +42,9 @@ namespace RayCaster
             frameStride = frameWidth * bytesPerPixel;
 
             frameBuffer = new byte[frameWidth * frameHeight * bytesPerPixel];
-
-
-
-
         }
 
-        public void beginRender()
-        {
-            renderFrame();
-            while(true)
-            {
-                renderFrame();
-            }
-        }
+
 
 
 
@@ -53,10 +53,17 @@ namespace RayCaster
 
         }
 
+        // Self explanatory, repeatedly calls renderFrame
+        public void renderLoop()
+        {
+            while (true)
+            {
+                renderFrame();
+            }
+        }
 
-
-
-        public void renderFrame() {
+        public void renderFrame() 
+        {
             // Draws a gradient over the back, mostly just testing if viewport works
             for (int i = 0; i < frameBuffer.Length; i++)
             {
@@ -69,17 +76,15 @@ namespace RayCaster
             }
 
 
-
-            BitmapSource frame = BitmapSource.Create(frameWidth, frameHeight, 96, 96, PixelFormats.Bgra32, null, frameBuffer, frameStride);
+            // Write the buffer to a bitmapsource object
+            frame = BitmapSource.Create(frameWidth, frameHeight, 96, 96, PixelFormats.Bgra32, null, frameBuffer, frameStride);
             frame.Freeze();
-            viewPort.Source = frame;
             frameCount++;
-            Trace.Write(frameCount);
+
+            // Send the frame to the ui
+            viewPort.Dispatcher.Invoke(
+            new rayCasterDelegate(setViewPort)
+            );
         }
-
-
-
-
-
     }
 }

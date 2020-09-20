@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace RayCaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        public delegate void rayCasterDelegate();
+        
 
         public MainWindow()
         {
@@ -36,6 +37,15 @@ namespace RayCaster
 
             rayCaster objRaycaster = new rayCaster(frameHeight, frameWidth, bytesPerPixel, ref viewPort);
 
+            Thread renderManager = new Thread(new ThreadStart(objRaycaster.renderLoop));
+            renderManager.Start();
+            
+
+
+
+
+
+            /*
             Trace.Write("BeginDispatch");
             viewPort.Dispatcher.BeginInvoke(
                 DispatcherPriority.Normal,
@@ -43,7 +53,7 @@ namespace RayCaster
                 );
 
             Trace.Write("EndDispatch");
-
+            */
 
 
         }
