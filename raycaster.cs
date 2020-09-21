@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Diagnostics;
+using System.IO;
 
 namespace RayCaster
 {
@@ -44,7 +45,11 @@ namespace RayCaster
             frameBuffer = new byte[frameWidth * frameHeight * bytesPerPixel];
         }
 
-
+        public void loadMap()
+        {
+            string mapText = Properties.Resources.simpleTestMap;
+            Trace.Write(mapText);
+        }
 
 
 
@@ -56,6 +61,7 @@ namespace RayCaster
         // Self explanatory, repeatedly calls renderFrame
         public void renderLoop()
         {
+            loadMap();
             while (true)
             {
                 renderFrame();
