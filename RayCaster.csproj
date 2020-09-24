@@ -64,6 +64,8 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="savedCode.cs" />
+    <Compile Include="game.cs" />
+    <Compile Include="player.cs" />
     <Compile Include="raycaster.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

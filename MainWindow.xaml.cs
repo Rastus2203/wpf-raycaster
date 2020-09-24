@@ -35,13 +35,14 @@ namespace RayCaster
             int bytesPerPixel = 4;
 
 
-            rayCaster objRaycaster = new rayCaster(frameHeight, frameWidth, bytesPerPixel, ref viewPort);
 
+            game objGame = new game();
+            Thread gameManager = new Thread(new ThreadStart(objGame.gameLoop));
+            gameManager.Start();
+
+            rayCaster objRaycaster = new rayCaster(frameHeight, frameWidth, bytesPerPixel, ref viewPort, ref objGame);
             Thread renderManager = new Thread(new ThreadStart(objRaycaster.renderLoop));
             renderManager.Start();
-            
-
-
 
 
 

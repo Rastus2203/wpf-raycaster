@@ -34,24 +34,41 @@ namespace RayCaster
         Image viewPort;
         byte[] frameBuffer;
 
-        public rayCaster (int inputHeight, int inputWidth, int inputBytesPerPixel, ref Image inputViewPort)
+        game game;
+        int[,] worldMap;
+
+
+        public rayCaster (int inputHeight, int inputWidth, int inputBytesPerPixel, ref Image inputViewPort, ref game inputGame)
         {
             frameWidth = inputWidth;
             frameHeight = inputHeight;
             bytesPerPixel = inputBytesPerPixel;
             viewPort = inputViewPort;
+            game = inputGame;
             frameStride = frameWidth * bytesPerPixel;
 
             frameBuffer = new byte[frameWidth * frameHeight * bytesPerPixel];
         }
 
-        public void loadMap()
+
+
+        public void doRayCast()
         {
-            string mapText = Properties.Resources.simpleTestMap;
-            Trace.Write(mapText);
+            float dirX = game.player.xDir;
+            float dirY = game.player.yDir;
+            float planeX = game.player.xPlane;
+            float planeY = game.player.yPlane;
+
+
+
+
+            for (int x=0; x < frameWidth; x++)
+            {
+                float cameraX = 2 * x / (float)frameWidth - 1;
+                double rayDirX = dirX + planeX * cameraX;
+                double rayDirY = dirY + planeY * cameraX;
+            }
         }
-
-
 
         public void drawSolidWall(byte[] colour, int x, int width, int height)
         {
@@ -61,7 +78,6 @@ namespace RayCaster
         // Self explanatory, repeatedly calls renderFrame
         public void renderLoop()
         {
-            loadMap();
             while (true)
             {
                 renderFrame();
@@ -80,6 +96,10 @@ namespace RayCaster
                     frameBuffer[i] = 0xff;
                 }
             }
+
+
+            doRayCast();
+
 
 
             // Write the buffer to a bitmapsource object
